@@ -30,9 +30,15 @@ export const patientRegister = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const login = catchAsyncErrors(async (req, res, next) => {
-  const { email, password, role } = req.body;
-  if (!email || !password || !role) {
+  const { email, password,confirmPassword, role } = req.body;
+  if (!email || !password || !confirmPassword || !role) {
     return next(new ErrorHandler("Please provide all details!", 400));
+  }
+
+  if(password !== confirmPassword ){
+    return next(
+      new ErrorHandler("Password & confirmPassword do not match !",400)
+    );
   }
 
   const user = await User.findOne({ email }).select("+password");

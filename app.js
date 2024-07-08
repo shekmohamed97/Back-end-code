@@ -19,7 +19,7 @@ config({path:"./.env"});
 // CORS configuration
 app.use(
   cors({
-    origin: ["http://localhost:5173","http://localhost:5174","https://spontaneous-druid-c342fa.netlify.app","https://super-phoenix-83e982.netlify.app"],////
+    origin: [process.env.FRONTEND_URL,process.env.DASHBOARD_URL,process.env.LOCAL_API],////////////
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
