@@ -20,7 +20,7 @@ config({path:"./.env"});
 app.use(
   cors({
     origin: [
-      process.env.FRONTEND_URL,
+      "http://localhost:5173",
       process.env.DASHBOARD_URL,
       process.env.LOCAL_API,
       process.env.MESSAGE_API
