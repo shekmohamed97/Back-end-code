@@ -19,7 +19,12 @@ config({path:"./.env"});
 // CORS configuration
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL,process.env.DASHBOARD_URL,process.env.LOCAL_API],////////////
+    origin: [
+      process.env.FRONTEND_URL,
+      process.env.DASHBOARD_URL,
+      process.env.LOCAL_API,
+      process.env.MESSAGE_API
+    ],////////////
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
