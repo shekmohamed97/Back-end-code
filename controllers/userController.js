@@ -94,11 +94,11 @@ export const addNewAdmin=catchAsyncErrors(async(req,res,next)=>{
 })
 
 
-export const getAllDocters = catchAsyncErrors(async(req,res,nextt)=>{
-  const docters =await User.find({role:"Docter"});
+export const getAllDocters = catchAsyncErrors(async(req,res,next)=>{
+  const doctors =await User.find({role:"Doctor"});
   res.status(200).json({
     success:true,
-    docters
+    doctors
   });
 });
 
