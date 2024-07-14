@@ -17,7 +17,7 @@ export const postAppointment = catchAsyncErrors(async(req,res,next)=>{
         department,
         doctor_firstName,
         doctor_lastName,
-        hasVisited,
+        // hasVisited,
         address,
     }=req.body;
     if(
@@ -36,21 +36,21 @@ export const postAppointment = catchAsyncErrors(async(req,res,next)=>{
     ){
         return next(new ErrorHandler("Please Fill Full Form",400));
     }
-    const isConflict = await User.find({
-        firstName:doctor_firstName,
-        lastName:doctor_lastName,
-        role:"Doctor",
-        doctorDepartment:department
-    });
-    if(isConflict.length === 0){
-        return next(new ErrorHandler("Doctor not found",404));
-    }
-    if(isConflict.length > 1){
-        return next (new ErrorHandler("Doctor conflict please contact through email or phone !",400));
-    }
+    // const isConflict = await User.find({
+    //     firstName:doctor_firstName,
+    //     lastName:doctor_lastName,
+    //     role:"Doctor",
+    //     doctorDepartment:department
+    // });
+    // if(isConflict.length === 0){
+    //     return next(new ErrorHandler("Doctor not found",404));
+    // }
+    // if(isConflict.length > 1){
+    //     return next (new ErrorHandler("Doctor conflict please contact through email or phone !",400));
+    // }
 
-    const doctorId = isConflict[0]._id;
-    const patientId = req.user._id;
+    // const doctorId = isConflict[0]._id;
+    // const patientId = req.user._id;
     const appointment = await Appointment.create({
         firstName,
         lastName,
@@ -65,10 +65,10 @@ export const postAppointment = catchAsyncErrors(async(req,res,next)=>{
             firstName:doctor_firstName,
             lastName:doctor_lastName
         },
-        hasVisited,
+        // hasVisited,
         address,
-        doctorId,
-        patientId
+        // doctorId,
+        // patientId
     });
     res.status(200).json({
         success:true,
