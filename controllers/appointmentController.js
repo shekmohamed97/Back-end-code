@@ -14,7 +14,6 @@ export const postAppointment = catchAsyncErrors(async(req,res,next)=>{
         dob,
         gender,
         appointment_date,
-        department,
         address,
     }=req.body;
     if(
@@ -25,8 +24,7 @@ export const postAppointment = catchAsyncErrors(async(req,res,next)=>{
     !nic ||
     !dob ||
     !gender ||
-    !appointment_date ||
-    !department ||
+    !appointment_date|| 
     !address
     ){
         return next(new ErrorHandler("Please Fill Full Form",400));
@@ -40,7 +38,6 @@ export const postAppointment = catchAsyncErrors(async(req,res,next)=>{
         dob,
         gender,
         appointment_date,
-        department,
         address
     });
     res.status(200).json({
