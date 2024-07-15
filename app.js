@@ -23,7 +23,7 @@ app.use(
       "http://localhost:5173",
       process.env.DASHBOARD_URL,
       process.env.LOCAL_API,
-      process.env.MESSAGE_API
+      "https://animated-babka-93bcd1.netlify.app"
     ],////////////
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
